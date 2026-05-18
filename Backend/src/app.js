@@ -4,6 +4,7 @@ const authRoutes = require("./routes/auth.routes");
 const VerifyToken = require("./middleware/auth.middleware");
 const patientRoutes = require("./routes/patient.routes");
 const cookieParser = require('cookie-parser'); 
+const wardRoutes = require("./routes/ward.routes"); 
 
 const app = express(); 
 
@@ -30,7 +31,9 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 
-app.use("/api/patient", patientRoutes);   
+app.use("/api/patient", patientRoutes);  
+
+app.use("/api/ward", wardRoutes);   
 
 
 module.exports = app; 
