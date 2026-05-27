@@ -1,0 +1,15 @@
+node_modules/
+Backend/node_modules/
+Frontend/node_modules/
+
+.env
+Backend/.env
+Frontend/.env
+Frontend/.env.local
+
+.next/
+Frontend/.next/
+
+package-lock.json
+npm-debug.log 
+.DS_Store
