@@ -1,9 +1,3 @@
-import path from "path";
-
-const nextConfig = {
-  turbopack: {
-    root: path.resolve(process.cwd()),
-  },
-};
+const nextConfig = {};
 
 export default nextConfig; 
