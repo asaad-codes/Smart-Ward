@@ -10,7 +10,7 @@ const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
 const MEDICATION_API = `${API_BASE_URL}/medication`;
-const PATIENT_API = `${API_BASE_URL}/patient`;
+const PATIENT_API = `${API_BASE_URL}/patient`;  
 
 function getToken() {
   if (typeof window === "undefined") return null;
@@ -112,10 +112,7 @@ export default function MedicationsPage() {
     if (currentRole !== "admin" && currentRole !== "doctor") return;
 
     try {
-      const response = await axios.get(
-        `${PATIENT_API}/getpatients`,
-        authConfig()
-      );
+      const response = await axios.get(`${PATIENT_API}/getpatients`, authConfig());
 
       const data = Array.isArray(response.data?.data)
         ? response.data.data.map(mapPatient)
@@ -189,7 +186,6 @@ export default function MedicationsPage() {
 
   useEffect(() => {
     fetchMedications();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlePatientChange = (patientId) => {
@@ -199,9 +195,7 @@ export default function MedicationsPage() {
       ...prev,
       patient: patientId,
       location: selectedPatient
-        ? `${selectedPatient.ward || "Ward"} • Bed ${
-            selectedPatient.bed || "--"
-          }`
+        ? `${selectedPatient.ward || "Ward"} • Bed ${selectedPatient.bed || "--"}`
         : prev.location,
     }));
   };
@@ -375,9 +369,7 @@ export default function MedicationsPage() {
         <section style={hero}>
           <div>
             <div style={eyebrow}>
-              {isPatient
-                ? "MY MEDICATION RECORDS"
-                : "SMARTWARD MEDICATION CONTROL"}
+              {isPatient ? "MY MEDICATION RECORDS" : "SMARTWARD MEDICATION CONTROL"}
             </div>
 
             <h1 style={heroTitle}>
@@ -402,10 +394,7 @@ export default function MedicationsPage() {
             </button>
 
             {canManage && (
-              <button
-                onClick={() => setShowAddModal(true)}
-                style={heroPrimaryBtn}
-              >
+              <button onClick={() => setShowAddModal(true)} style={heroPrimaryBtn}>
                 + Add Medication
               </button>
             )}
@@ -1138,4 +1127,5 @@ const cancelBtn = {
   padding: "0 20px",
   fontWeight: 900,
   cursor: "pointer",
-}; 
+};
+ 
