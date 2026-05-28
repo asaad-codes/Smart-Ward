@@ -112,7 +112,10 @@ export default function MedicationsPage() {
     if (currentRole !== "admin" && currentRole !== "doctor") return;
 
     try {
-      const response = await axios.get(`${PATIENT_API}/getpatients`, authConfig());
+      const response = await axios.get(
+        `${PATIENT_API}/getpatients`,
+        authConfig()
+      );
 
       const data = Array.isArray(response.data?.data)
         ? response.data.data.map(mapPatient)
@@ -186,6 +189,7 @@ export default function MedicationsPage() {
 
   useEffect(() => {
     fetchMedications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlePatientChange = (patientId) => {
@@ -398,7 +402,10 @@ export default function MedicationsPage() {
             </button>
 
             {canManage && (
-              <button onClick={() => setShowAddModal(true)} style={heroPrimaryBtn}>
+              <button
+                onClick={() => setShowAddModal(true)}
+                style={heroPrimaryBtn}
+              >
                 + Add Medication
               </button>
             )}
@@ -1131,4 +1138,4 @@ const cancelBtn = {
   padding: "0 20px",
   fontWeight: 900,
   cursor: "pointer",
-};
+}; 
