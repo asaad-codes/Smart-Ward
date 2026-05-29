@@ -6,8 +6,9 @@ import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+// Clean up any potential trailing slashes from the environment variable safely
+const rawUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+const API_BASE_URL = rawUrl.endsWith("/") ? rawUrl.slice(0, -1) : rawUrl;
 
 const AUTH_API = `${API_BASE_URL}/auth`;
 
@@ -200,7 +201,7 @@ export default function RegisterPage() {
     }
 
     try {
-      setLoading(true);
+      loading(true);
 
       const payload = {
         name: form.fullName.trim(),
@@ -385,7 +386,7 @@ export default function RegisterPage() {
                 width: "190px",
                 height: "190px",
                 borderRadius: "50%",
-                background: "rgba(255,255,255,0.13)",
+                background: "rgba(255,255,255,0.14)",
                 top: "-70px",
                 right: "-70px",
               }}
