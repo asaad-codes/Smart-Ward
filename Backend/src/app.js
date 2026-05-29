@@ -66,12 +66,13 @@ app.get("/", (req, res) => {
     });
 });
 
-app.use("/api/auth", authRoutes);
-app.use("/api/patient", patientRoutes);
-app.use("/api/ward", wardRoutes);
-app.use("/api/vital", vitalRoutes);
-app.use("/api/medication", medicationRoutes);
-app.use("/api/ai", aiRoutes);
+// REMOVED "/api" PREFIX TO MATCH YOUR FRONTEND API CALLS
+app.use("/auth", authRoutes);
+app.use("/patient", patientRoutes);
+app.use("/ward", wardRoutes);
+app.use("/vital", vitalRoutes);
+app.use("/medication", medicationRoutes);
+app.use("/ai", aiRoutes);
 
 // Wrong route handler
 app.use((req, res) => {
