@@ -1,16 +1,18 @@
 "use client";
 
-import Link from "next/link";
+import Link from "next/link"; 
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 
 // Clean up any potential trailing slashes from the environment variable safely
+// Clean up any potential trailing slashes from the environment variable safely
 const rawUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 const API_BASE_URL = rawUrl.endsWith("/") ? rawUrl.slice(0, -1) : rawUrl;
 
-const AUTH_API = `${API_BASE_URL}/auth`;
+// This ensures it becomes .../auth instead of ...//auth
+const AUTH_API = `${API_BASE_URL}/auth`; 
 
 function getPasswordStrength(password) {
   const pass = String(password || "").trim();
