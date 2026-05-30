@@ -203,7 +203,7 @@ export default function RegisterPage() {
     }
 
     try {
-      loading(true);
+      setLoading(true); 
 
       const payload = {
         name: form.fullName.trim(),
